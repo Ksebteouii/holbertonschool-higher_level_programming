@@ -1,10 +1,3 @@
-#!/usr/bin/python3
-"""
-module Rectangle class
-"""
-from models.base import Base
-
-
 class Rectangle(Base):
     """A class representing a rectangle that inherits from the Base class"""
 
@@ -66,24 +59,18 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """compute and return the area of the rectangle"""
+        """Compute and return the area of the rectangle"""
         return self.__width * self.__height
 
     def display(self):
         """Print the rectangle with '#' characters"""
-        for _ in range(self.height):
-            print("#" * self.width)
+        for _ in range(self.__y):
+            print()
+        for _ in range(self.__height):
+            print(" " * self.__x + "#" * self.__width)
 
     def __str__(self):
         """Return a string representation of the Rectangle instance"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.__x, self.__y, self.__width, self.__height
         )
-
-    def display(self):
-        """Print the rectangle with '#' characters, considering x and y offsets"""
-
-    for _ in range(self.y):
-        print()
-    for _ in range(self.height):
-        print(" " * self.x + "#" * self.width)
