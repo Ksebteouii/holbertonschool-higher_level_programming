@@ -3,7 +3,8 @@
 module Rectangle class
 """
 from models.base import Base
- 
+
+
 class Rectangle(Base):
     """A class representing a rectangle that inherits from the Base class"""
 
