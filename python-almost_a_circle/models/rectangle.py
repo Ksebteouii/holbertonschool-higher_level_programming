@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+"""
+module Rectangle class
+"""
+from models.base import Base
+ 
 class Rectangle(Base):
     """A class representing a rectangle that inherits from the Base class"""
 
@@ -91,20 +97,25 @@ class Rectangle(Base):
         print("{}".format("\n" * self.__y), end="")
         for i in range(self.height):
             print("{}{}".format(" " * self.__x, "#" * self.width))
-    def update(self, *args):
-        """Update the attributes of the rectangle"""
-        if len(args) > 0:
-            self.id = args[0]
-        if len(args) > 1:
-            self.width = args[1]
-        if len(args) > 2:
-            self.height = args[2]
-        if len(args) > 3:
-            self.x = args[3]
-        if len(args) > 4:
-            self.y = args[4]
+
     def __str__(self):
         """Return a string representation of the Rectangle instance"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.__x, self.__y, self.__width, self.__height
         )
+
+    def update(self, *args):
+        count = 0
+
+        for arg in args:
+            if count == 0:
+                self.id = arg
+            if count == 1:
+                self.__width = arg
+            if count == 2:
+                self.__height = arg
+            if count == 3:
+                self.__x = arg
+            if count == 4:
+                self.__y = arg
+            count += 1
