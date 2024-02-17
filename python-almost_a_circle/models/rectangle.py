@@ -1,3 +1,10 @@
+#!/usr/bin/python3
+"""
+module Rectangle class
+"""
+from models.base import Base
+
+
 class Rectangle(Base):
     """A class representing a rectangle that inherits from the Base class"""
 
@@ -43,7 +50,7 @@ class Rectangle(Base):
         if type(value) is not int:
             raise TypeError("x must be an integer")
         if value < 0:
-            raise ValueError("x must be >= 0")
+            raise ValueError("x must be > 0")
         self.__x = value
 
     @property
@@ -55,20 +62,19 @@ class Rectangle(Base):
         if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
-            raise ValueError("y must be >= 0")
+            raise ValueError("y must be > 0")
         self.__y = value
 
     def area(self):
-        """compute and return the area of the rectangle"""
-        return self.__width * self.__height
+        self.__width * self.__height
 
     def display(self):
-        """Print the rectangle with '#' characters"""
-        for _ in range(self.height):
-            print("#" * self.width)
+        print("{}".format("\n" * self.__y), end="")
+        for i in range(self.height):
+            print("{}{}".format(" " * self.__x, "#" * self.width))
 
     def __str__(self):
-        """Return a string representation of the Rectangle instance"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.__x, self.__y, self.__width, self.__height
         )
+    
