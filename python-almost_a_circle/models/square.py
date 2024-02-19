@@ -40,29 +40,16 @@ class Square(Rectangle):
         """
         Update the class square
         """
-        count = 0
-        for kk in args:
-            if count == 0:
-                self.id = kk
-            if count == 1:
-                self.width = kk
-                self.height = kk
-            if count == 2:
-                self.x = kk
-            if count == 3:
-                self.y = kk
-            count += 1
-        if count == 0:
-            for key, value in kwargs.items():
-                if key == "id":
-                    self.id = value
-                if key == "size":
-                    self.width = value
-                    self.height = value
-                if key == "x":
-                    self.x = value
-                if key == "y":
-                    self.y = value
+        if len(args) >= 1:
+            self.id = args[0]
+        if len(args) >= 2:
+            self.size = args[1]
+        if len(args) >= 3:
+            self.x = args[2]
+        if len(args) >= 4:
+            self.y = args[3]
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
     def to_dictionary(self):
         """returns dictionary represent a square"""
