@@ -1,44 +1,27 @@
 #!/usr/bin/python3
-"""
-lists all cities of that state, using the
-database hbtn_0e_4_usa
-"""
+"""Lists all the cities of a particular state from `hbtn_0e_4_usa` database."""
 
-import MySQLdb
-import sys
+if __name__ == '__main__':
+    from sys import argv
+    import MySQLdb
 
-
-def main(username, passsword, db_name, state_name):
-    """
-    lists all cities of that state
-    """
+    target_state = (argv[4], )
 
     db = MySQLdb.connect(
-        host="localhost", user=username,
-        port=3306, passwd=passsword, db=db_name
-    )
-    cur = db.cursor()
-
-    cur.execute(
-        """
-        SELECT cities.id,
-        cities.name FROM \
-cities JOIN states ON \
-cities.state_id = states.id \
-WHERE states.name = %(name)s ORDER BY \
-cities.id ASC;
-        """,
-        {"name": state_name},
-    )
-    rows = cur.fetchall()
-
-    if rows is not None:
-        print(", ".join([row[1] for row in rows]))
-
-
-if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-    state_name = sys.argv[4]
-    main(username, password, db_name, state_name)
+            host="localhost",
+            port=3306,
+            user=argv[1],
+            passwd=argv[2],
+            db=argv[3]
+            )
+    cursor = db.cursor()
+    cursor.execute(("SELECT cities.id, cities.name "
+                    "FROM states JOIN cities "
+                    "ON states.id = cities.state_id "
+                    "WHERE states.name = %s "
+                    "ORDER BY cities.id ASC"), target_state)
+    cities = cursor.fetchall()
+    for city in cities:
+        print(city)
+    cursor.close()
+    db.close()
