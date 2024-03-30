@@ -4,4 +4,3 @@ if __name__ == "__main__":
 
     a = variable_load_5.a
     print("{}".format(a))
-   
