@@ -1,16 +1,21 @@
 #!/usr/bin/python3
 """
-===========================
-Module with class MyList
-===========================
-"""
+    A subclass of list that provides a method to
+    print a sorted version of itself.
+    """
 
 
 class MyList(list):
-    """Class with method print_sorted"""
-    pass
+    """
+    A subclass of list that provides a method to
+    print a sorted version of itself.
+
+    Attributes:
+        new_list (list): An instance of a list.
+    """
 
     def print_sorted(self):
-        """Methot that sorted a list"""
-
-        print(sorted(list(self)))
+        """
+        Prints the sorted version of the list.
+        """
+        print(sorted(self))
