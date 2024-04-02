@@ -1,17 +1,23 @@
 #!/usr/bin/python3
 """
-    Insert here module comment
+    This function takes two parameters, 'a' and 'b', and adds them together.
 """
 
 
 def add_integer(a, b=98):
-    """ add two integers or flots """
-    if type(a) is not int and type(a) is not float:
+    """
+    Parameters:
+    a (int or float): The first number to be added.
+    b (int or float, optional): The second number to be added. Defaults to 98.
+
+    Returns:
+    int: The sum of 'a' and 'b', converted to an integer.
+
+    Raises:
+    TypeError: If 'a' or 'b' is not an integer or a float.
+    """
+    if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
-    if type(b) is not int and type(b) is not float:
+    if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-    if type(a) is float:
-        a = int(a)
-    if type(b) is float:
-        b = int(b)
-    return (a + b)
+    return int(a) + int(b)
