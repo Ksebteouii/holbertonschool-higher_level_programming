@@ -1,21 +1,34 @@
 #!/usr/bin/python3
 """
-    Insert here module comment
-
-    Write a function that prints My name is <first name> <last name>
-
-    Prototype: def say_my_name(first_name, last_name=""):
-    first_name and last_name must be strings otherwise,
-    raise a TypeError exception with the message
-    first_name must be a string or last_name must be a string
-    You are not allowed to import any module
-
+This script defines a function 'say_my_name' that prints
+the provided first name and last name.
+If no last name is provided, it prints only the first name.
 """
 
 
 def say_my_name(first_name, last_name=""):
-    """ print my first and last name """
-    str_error = "first_name must be a string or last_name must be a string"
-    if type(first_name) is not str or type(last_name) is not str:
-        raise TypeError(str_error)
-    print("My name is", first_name, last_name)
+    """
+    Prints the provided first name and last name.
+
+    Parameters:
+    - first_name (str): The first name to be printed.
+    - last_name (str): The last name to be printed. Default is
+    an empty string.
+
+    Raises:
+    - TypeError: If first_name or last_name is not a string.
+
+    Returns:
+    - None
+    """
+
+    # Check if first_name is a string
+    if not isinstance(first_name, str):
+        raise TypeError("first_name must be a string")
+
+    # Check if last_name is a string
+    if not isinstance(last_name, str):
+        raise TypeError("last_name must be a string")
+
+    # Print the name
+    print("My name is {} {}".format(first_name, last_name))
